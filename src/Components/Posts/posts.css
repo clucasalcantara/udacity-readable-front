@@ -1,0 +1,70 @@
+.message-posts-by-category {
+  margin: 1rem 0;
+}
+
+.message-posts-by-category small {
+  font: 400 .9rem Roboto,Arial,Helvetica,Sans-serif;
+  display: block;
+  text-transform: initial;
+  margin: 0;
+}
+
+.message-posts-by-category h2 {
+  margin: 0;
+}
+
+.list-posts {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.list-posts div {
+  margin: .2rem 0;
+}
+
+.list-posts li {
+  list-style-type: none;
+  flex: 1 0 275px;
+  margin-bottom: 50px;
+}
+
+.list-posts .post-header{
+  margin-bottom: .6rem;
+  font: 800 1.3rem Roboto,Arial,Helvetica,Sans-serif;
+  word-break: break-word;
+}
+
+.list-posts .post-header a {
+  color: #222;
+  text-decoration: none;
+}
+
+.list-posts .post-header a:hover {
+  text-decoration: underline !important;
+}
+
+.list-posts .edit a, .list-posts .delete{
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  margin: 0 .5rem;
+  padding: .1rem .3rem;
+}
+
+.list-posts .edit a {
+  color: #1a75eb;
+}
+
+.list-posts .delete {
+  background: #ff5151;
+  color: #fff;
+}
+
+@media screen and (min-width: 734px) {
+  .message-posts-by-category {
+    font-size: 3rem;
+    line-height: 1.6;
+    margin-bottom: 100px;
+  }
+}
