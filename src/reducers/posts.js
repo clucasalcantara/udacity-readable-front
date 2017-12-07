@@ -1,7 +1,7 @@
 import {
   POSTS_FETCH_DATA_SUCCESS,
   POSTS_IS_LOADING,
-  POSTS_HAS_ERRORED,
+  POSTS_HAS_ERROR,
   POST_FETCH_BY_ID_DATA_SUCCESS,
   INSERT_UPDATE_POST_SUCCESS,
   DELETE_POST_SUCCESS,
@@ -19,7 +19,7 @@ export function postsIsLoading(state = false, action) {
 
 export function postsHasErrored(state = false, action) {
   switch (action.type) {
-    case POSTS_HAS_ERRORED:
+    case POSTS_HAS_ERROR:
       return action.hasErrored
     default:
       return state

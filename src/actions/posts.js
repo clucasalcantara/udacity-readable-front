@@ -1,7 +1,7 @@
 import { get, post, put, deleteData } from '../utils/api'
 import {
   POSTS_IS_LOADING,
-  POSTS_HAS_ERRORED,
+  POSTS_HAS_ERROR,
   POSTS_FETCH_DATA_SUCCESS,
   POST_FETCH_BY_ID_DATA_SUCCESS,
   INSERT_UPDATE_POST_SUCCESS,
@@ -18,7 +18,7 @@ export function postsIsLoading(bool) {
 
 export function postsHasErrored(bool) {
   return {
-      type: POSTS_HAS_ERRORED,
+      type: POSTS_HAS_ERROR,
       hasErrored: bool
   }
 }

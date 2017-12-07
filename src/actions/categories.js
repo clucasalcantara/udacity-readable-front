@@ -1,7 +1,7 @@
 import { get } from '../utils/api'
 import {
   CATEGORIES_IS_LOADING,
-  CATEGORIES_HAS_ERRORED,
+  CATEGORIES_HAS_ERROR,
   CATEGORIES_FETCH_DATA_SUCCESS
 } from '../utils/actionTypes'
 
@@ -12,9 +12,9 @@ export function categoriesIsLoading (bool) {
   }
 }
 
-export function categoriesHasErrored (bool) {
+export function categoriesHasError (bool) {
   return {
-    type: CATEGORIES_HAS_ERRORED,
+    type: CATEGORIES_HAS_ERROR,
     hasErrored: bool
   }
 }
@@ -36,6 +36,6 @@ export function categoriesFetchData() {
         return res.data
       })
       .then(categories => dispatch(categoriesFetchDataSuccess(categories)))
-      .catch(() => dispatch(categoriesHasErrored(true)))
+      .catch(() => dispatch(categoriesHasError(true)))
   }
 }

@@ -1,6 +1,6 @@
 import {
   CATEGORIES_IS_LOADING,
-  CATEGORIES_HAS_ERRORED,
+  CATEGORIES_HAS_ERROR,
   CATEGORIES_FETCH_DATA_SUCCESS
 } from '../utils/actionTypes'
 
@@ -15,7 +15,7 @@ export function categoriesIsLoading(state = false, action) {
 
 export function categoriesHasErrored(state = false, action) {
   switch (action.type) {
-    case CATEGORIES_HAS_ERRORED:
+    case CATEGORIES_HAS_ERROR:
       return action.hasErrored
     default:
       return state
