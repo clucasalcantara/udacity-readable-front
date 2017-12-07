@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { NavLink, Link } from 'react-router-dom'
-import { categoriesFetchData } from '../../actions/categories'
+
+import { categoriesFetchData } from '../../../actions/categories'
 import './header.css'
 
 class Header extends Component {
@@ -32,11 +33,11 @@ class Header extends Component {
       <section className="header">
         <div className="logo">
           <Link to="/">
-            <h1>Projeto Leitura</h1>
+            <h1>Read Project</h1>
           </Link>
         </div>
         <span className="create-post">
-          <Link to="/admin/post">CREATE NEW POST</Link>
+          <Link to="/admin/post">Create a new post</Link>
         </span>
         <nav className="main-menu">
           {this.renderMenu()}

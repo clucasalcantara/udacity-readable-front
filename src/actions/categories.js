@@ -27,7 +27,7 @@ export function categoriesFetchDataSuccess (categories) {
 }
 
 export function categoriesFetchData() {
-  const url = 'http://localhost:3001/categories'
+  const url = 'categories'
   return (dispatch) => {
     dispatch(categoriesIsLoading(true))
     get(url)

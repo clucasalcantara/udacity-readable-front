@@ -9,24 +9,26 @@
   margin: 0;
 }
 
+.posts-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .message-posts-by-category h2 {
   margin: 0;
 }
 
 .list-posts {
   display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-}
-
-.list-posts div {
-  margin: .2rem 0;
+  justify-content: space-between;
 }
 
 .list-posts li {
   list-style-type: none;
-  flex: 1 0 275px;
-  margin-bottom: 50px;
+  border: 1px solid black;
+  padding: 20px;
 }
 
 .list-posts .post-header{
@@ -67,4 +69,9 @@
     line-height: 1.6;
     margin-bottom: 100px;
   }
+}
+
+.order-by-box {
+  margin-top: 2em;
+  text-align: center;
 }

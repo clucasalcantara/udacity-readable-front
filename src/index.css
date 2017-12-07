@@ -6,13 +6,6 @@ body {
   font-family: sans-serif;
 }
 
-.App {
-  max-width: 1300px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 0 1.12rem;
-}
-
 button {
   background: #1a75eb;
   color: #fff;

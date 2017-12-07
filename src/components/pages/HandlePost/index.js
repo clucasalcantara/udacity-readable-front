@@ -4,9 +4,10 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import uuidv1 from 'uuid/v1'
 import swal from 'sweetalert2'
-import Header from '../Header'
-import { postFetchById, insertPost, updatePost } from '../../actions/posts'
-import { categoriesFetchData } from '../../actions/categories'
+
+import Header from '../../common/Header'
+import { postFetchById, insertPost, updatePost } from '../../../actions/posts'
+import { categoriesFetchData } from '../../../actions/categories'
 import NotFound from '../NotFound'
 
 

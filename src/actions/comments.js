@@ -1,9 +1,9 @@
 import { get, post, put, deleteData } from '../utils/api'
 import {
   COMMENTS_IS_LOADING,
-  COMMENTS_HAS_ERRORED,
-  COMMENTS_FETCH_DATA_SUCCESS,
-  COMMENT_FETCH_BY_ID_DATA_SUCCESS,
+  COMMENTS_HAS_ERROR,
+  FETCH_COMMENTS_DATA_SUCCESS,
+  FETCH_COMMENTS_BY_ID_SUCCESS,
   DELETE_COMMENT_SUCCESS,
   INSERT_UPDATE_COMMENT_SUCCESS
 } from '../utils/actionTypes'
@@ -17,21 +17,21 @@ export function commentsIsLoading(bool) {
 
 export function commentsHasErrored(bool) {
   return {
-    type: COMMENTS_HAS_ERRORED,
+    type: COMMENTS_HAS_ERROR,
     hasErrored: bool
   }
 }
 
 export function commentsFetchDataSuccess(comments) {
   return {
-    type: COMMENTS_FETCH_DATA_SUCCESS,
+    type: FETCH_COMMENTS_DATA_SUCCESS,
     comments
   }
 }
 
 export function commentFetchByIdDataSuccess(comment) {
   return {
-    type: COMMENT_FETCH_BY_ID_DATA_SUCCESS,
+    type: FETCH_COMMENTS_BY_ID_SUCCESS,
     comment
   }
 }
@@ -52,7 +52,7 @@ export function insertUpdateCommentSuccess(comment) {
 }
 
 export function commentsFetchData(postId) {
-  const url = `http://localhost:3001/posts/${postId}/comments`
+  const url = `posts/${postId}/comments`
   return (dispatch) => {
     dispatch(commentsIsLoading(true))
     get(url)
@@ -67,7 +67,7 @@ export function commentsFetchData(postId) {
 
 
 export function insertComment(commentData) {
-  const url = `http://localhost:3001/comments/`
+  const url = `comments/`
   
   return (dispatch) => {
     post(url, commentData)
@@ -81,7 +81,7 @@ export function insertComment(commentData) {
 }
 
 export function commentFetchById(idComment) {
-  const url = `http://localhost:3001/comments/${idComment}`
+  const url = `comments/${idComment}`
   return (dispatch) => {
     dispatch(commentsIsLoading(true))
     get(url)
@@ -96,7 +96,7 @@ export function commentFetchById(idComment) {
 }
 
 export function updateComment(id, {body, timestamp}) {
-  const url = `http://localhost:3001/comments/${id}`
+  const url = `comments/${id}`
   const data = {
     timestamp,
     body
@@ -113,7 +113,7 @@ export function updateComment(id, {body, timestamp}) {
 }
 
 export function deleteComment(id) {
-  const url = `http://localhost:3001/comments/${id}`
+  const url = `comments/${id}`
   
   return (dispatch) => {
     deleteData(url)

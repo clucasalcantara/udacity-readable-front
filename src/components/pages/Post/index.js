@@ -2,13 +2,16 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import swal from 'sweetalert2'
-import Header from '../Header'
-import VoteScore from '../VoteScore'
+
+import Header from '../../common/Header/'
+import VoteScore from '../../common/VoteScore'
 import NotFound from '../NotFound'
-import { commentsFetchData } from '../../actions/comments'
-import { postFetchById, deletePost } from '../../actions/posts'
-import { handleVoteScore } from '../../actions/votescore'
-import Comments from '../Comments'
+
+import { commentsFetchData } from '../../../actions/comments'
+import { postFetchById, deletePost } from '../../../actions/posts'
+import { handleVoteScore } from '../../../actions/votescore'
+import Comments from '../../common/Comments'
+
 import './post.css'
 
 class Post extends PureComponent {

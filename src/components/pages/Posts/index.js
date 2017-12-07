@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { postsFetchData, deletePost, handleSort } from '../../actions/posts'
-import { handleVoteScore } from '../../actions/votescore'
-import Header from '../Header'
-import VoteScore from '../VoteScore'
+
+import { postsFetchData, deletePost, handleSort } from '../../../actions/posts'
+import { handleVoteScore } from '../../../actions/votescore'
+import Header from '../../common/Header'
+import VoteScore from '../../common/VoteScore'
+
 import './posts.css'
 
 class Posts extends Component {
@@ -53,7 +55,7 @@ class Posts extends Component {
 
   handleScore = async (id, value) => {
     const { handleScore } = this.props
-    const url = `http://localhost:3001/posts/${id}`
+    const url = `posts/${id}`
     const res = { option: value }
     await handleScore(url, res)
     this.listPosts()
@@ -77,45 +79,50 @@ class Posts extends Component {
     return (
       <div>
         <Header />
-        {message && <div className="message-posts-by-category">
-          <small>All posts from category</small>
-          <h2>{this.getCategoryName()}</h2>
-        </div>}
-        <h1>{message}</h1>
-        <div>
-          Order By: 
-          <button onClick={this.handleSort('timestamp')}>Data</button>
-          <button onClick={this.handleSort('voteScore')}>Score</button>
+        { 
+          message &&
+          <div className="message-posts-by-category">
+            <small>All posts from category</small>
+            <h2>{this.getCategoryName()}</h2>
+          </div>
+        }
+        <div className="order-by-box">
+          Order posts by: 
+          <button className="regular-button" onClick={this.handleSort('timestamp')}>Data</button>
+          <button className="regular-button" onClick={this.handleSort('voteScore')}>Score</button>
         </div>
-        <ul className="list-posts">
-          {posts.map(post => (
-            <li key={post.id}>
-              <div className="post-header">
-                <Link to={{
-                  pathname: `/${post.category}/${post.id}`
-                }}>
-                  {post.title}
-                </Link>
-              </div>
+        <div className="posts-wrapper">
+        <h1>{message}</h1>
+          <ul className="list-posts">
+            {posts.map(post => (
+              <li key={post.id}>
+                <div className="post-header">
+                  <Link to={{
+                    pathname: `/${post.category}/${post.id}`
+                  }}>
+                    {post.title}
+                  </Link>
+                </div>
 
-              <span className="edit">
-                <Link to={`/admin/post/${post.id}`}>
-                  edit
-                </Link>
-              </span>
+                <span className="edit">
+                  <Link to={`/admin/post/${post.id}`}>
+                    edit
+                  </Link>
+                </span>
 
-              <button className="delete" onClick={() => this.onDeletePost(post.id)}> Delete </button>
-              
-              <div>Author: <strong>{post.author}</strong></div>
+                <button className="delete" onClick={() => this.onDeletePost(post.id)}> Delete </button>
+                
+                <div>Author: <strong>{post.author}</strong></div>
 
-              <div>Category: <strong> {post.category} </strong></div>
+                <div>Category: <strong> {post.category} </strong></div>
 
-              <div><strong>{post.commentCount}</strong> Comments</div>
+                <div><strong>{post.commentCount}</strong> Comments</div>
 
-              <VoteScore id={post.id} handleScore={this.handleScore} score={post.voteScore} />
-            </li>
-          ))}
-        </ul>
+                <VoteScore id={post.id} handleScore={this.handleScore} score={post.voteScore} />
+              </li>
+            ))}
+          </ul>
+        </div>
 
       </div>
     )

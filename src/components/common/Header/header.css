@@ -1,16 +1,15 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
-}
-
-.logo {
-  padding: .7rem 0
+  background-image: linear-gradient(90deg, #02b3e4 0, #02ccba);
+  max-height: 45px;
+  width: 100%;
 }
 
 .logo a {
-  color: #333;
+  color: white;
     text-decoration: none;
 }
 
@@ -19,11 +18,9 @@
   text-transform: uppercase;
   letter-spacing: .2rem;
   margin: 0;
-  /* background: #eb1a1f;
-  color: #fff; */
 }
 
-.create-post a{
+.create-post a {
   text-decoration: none;
   padding: .7rem 1rem;
   background: #1a75eb;
@@ -39,7 +36,10 @@
 }
 
 .main-menu {
+  justify-content: center;
+  align-content: center;
   width: 100%;
+  align-self: center;
 }
 
 .main-menu ul {
@@ -60,9 +60,10 @@
 .main-menu ul li a {
   cursor: pointer;
   padding: 3px 10px;
-  color: #494949;
+  color: white;
   text-decoration: none;
-  font: 700 1.2rem Roboto,Arial,Helvetica,Sans-serif;
+  font: 700 .9rem Roboto,Arial,Helvetica,Sans-serif;
+  text-transform: capitalize;
 }
 
 .main-menu ul li a:hover {
@@ -79,7 +80,6 @@
   .header {
     height: 5rem;
     flex-wrap: nowrap;
-    padding-bottom: 100px;
   }
   .main-menu {
     flex-grow: 1;

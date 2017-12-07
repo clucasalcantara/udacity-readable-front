@@ -4,8 +4,9 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import uuidv1 from 'uuid/v1'
 import swal from 'sweetalert2'
-import Header from '../Header'
-import { insertComment, commentFetchById, updateComment } from '../../actions/comments'
+
+import Header from '../../common/Header'
+import { insertComment, commentFetchById, updateComment } from '../../../actions/comments'
 import NotFound from '../NotFound'
 
 

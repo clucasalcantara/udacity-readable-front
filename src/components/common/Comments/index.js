@@ -1,10 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import swal from 'sweetalert2'
+
 import VoteScore from '../VoteScore'
-import { deleteComment, commentsFetchData } from '../../actions/comments'
-import { handleVoteScore } from '../../actions/votescore'
-import { connect } from 'react-redux'
+import { deleteComment, commentsFetchData } from '../../../actions/comments'
+import { handleVoteScore } from '../../../actions/votescore'
+
+import './style.css'
 
 const onDeleteComment = async (id, props, history) => {
   const { deleteComment } = props
@@ -45,29 +48,31 @@ const Comments = (props) => {
       <div>
         <h2>Comments</h2>
         <Link to={`/admin/comment/${idPost}`}>Add new COMMENT</Link>
-        <ul>
-          {data.map(comment => (
-            <li key={comment.id}>
-              <div>{comment.body}</div>
+        <div className="comments-wrapper">
+          <ul>
+            {data.map(comment => (
+              <li key={comment.id}>
+                <div>{comment.body}</div>
 
-              <Link to={`/admin/comment/${parentId}/${comment.id}`}>
-                ( edit this comment )
-              </Link>
+                <Link to={`/admin/comment/${parentId}/${comment.id}`}>
+                  ( edit this comment )
+                </Link>
 
-              <button onClick={() => onDeleteComment(comment.id, props, history)}> Delete </button>
+                <button onClick={() => onDeleteComment(comment.id, props, history)}> Delete </button>
 
-              <div>
-                Author: <b>{comment.author}</b>
-              </div>
+                <div>
+                  Author: <b>{comment.author}</b>
+                </div>
 
-              <div>
-                <b>{comment.commentCount}</b> Comments
-              </div>
+                <div>
+                  <b>{comment.commentCount}</b> Comments
+                </div>
 
-              <VoteScore id={comment.id} handleScore={handleScore} score={comment.voteScore} />
-            </li>
-          ))}
-        </ul>
+                <VoteScore id={comment.id} handleScore={handleScore} score={comment.voteScore} />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
     </div>

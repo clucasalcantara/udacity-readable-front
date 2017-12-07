@@ -1,16 +1,20 @@
 import axios from 'axios'
 
-export function get (url) {
+import { API_URL, API_PORT } from '../config'
+
+export function get (action) {
+  const url = `http://${API_URL}:${API_PORT}/${action}`
   const headers = { 'Authorization': 'whatever-you-want' }
   return axios({
-    method: 'get',
     url,
+    method: 'get',
     headers
   })
 }
 
-export function post (url, data) {
+export function post (action, data) {
   const headers = { 'Authorization': 'whatever-you-want' }
+  const url = `http://${API_URL}:${API_PORT}/${action}`
   return axios({
     method: 'post',
     url,
@@ -19,8 +23,9 @@ export function post (url, data) {
   })
 }
 
-export function put (url, data) {
+export function put (action, data) {
   const headers = { 'Authorization': 'whatever-you-want' }
+  const url = `http://${API_URL}:${API_PORT}${action}`
   return axios({
     method: 'put',
     url,
@@ -29,8 +34,9 @@ export function put (url, data) {
   })
 }
 
-export function deleteData (url, data) {
+export function deleteData (action, data) {
   const headers = { 'Authorization': 'whatever-you-want' }
+  const url = `http://${API_URL}:${API_PORT}/${action}`
   return axios({
     method: 'delete',
     url,

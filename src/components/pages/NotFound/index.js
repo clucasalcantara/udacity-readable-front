@@ -1,5 +1,6 @@
 import React from 'react'
-import Header from '../Header'
+
+import Header from '../../common/Header'
 
 const NotFound = () => {
   return (

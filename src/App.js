@@ -1,10 +1,11 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Posts from './Components/Posts'
-import Post from './Components/Post'
-import NotFound from './Components/NotFound'
-import HandlePost from './Components/HandlePost'
-import HandleComment from './Components/HandleComment'
+
+import Posts from './components/pages/Posts'
+import Post from './components/pages/Post'
+import NotFound from './components/pages/NotFound'
+import HandlePost from './components/pages/HandlePost'
+import HandleComment from './components/pages/HandleComment'
 
 const App = () => (
   <div className="App">

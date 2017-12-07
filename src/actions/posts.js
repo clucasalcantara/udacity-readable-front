@@ -59,7 +59,7 @@ export function handleSort(sortBy) {
 }
 
 export function postFetchById(idPost) {
-  const url = `http://localhost:3001/posts/${idPost}`
+  const url = `posts/${idPost}`
   return (dispatch) => {
     dispatch(postsIsLoading(true))
     get(url)
@@ -74,8 +74,7 @@ export function postFetchById(idPost) {
 }
 
 export function postsFetchData(category) {
-  const baseUrl = 'http://localhost:3001'
-  const url = category ? `${baseUrl}/${category}/posts` : `${baseUrl}/posts`
+  const url = category ? `${category}/posts` : 'posts'
   return (dispatch) => {
     dispatch(postsIsLoading(true))
     get(url)
@@ -89,7 +88,7 @@ export function postsFetchData(category) {
 }
 
 export function insertPost(postData, id) {
-  const baseUrl = 'http://localhost:3001/posts'
+  const baseUrl = 'posts'
   const url = id ? `${baseUrl}/${id}` : baseUrl
   return (dispatch) => {
     post(url, postData)
@@ -103,7 +102,7 @@ export function insertPost(postData, id) {
 }
 
 export function updatePost(id, { title, body }) {
-  const url = `http://localhost:3001/posts/${id}`
+  const url = `posts/${id}`
   const data = {
     title,
     body
@@ -120,7 +119,7 @@ export function updatePost(id, { title, body }) {
 }
 
 export function deletePost(id) {
-  const url = `http://localhost:3001/posts/${id}`
+  const url = `posts/${id}`
   
   return (dispatch) => {
     deleteData(url)
