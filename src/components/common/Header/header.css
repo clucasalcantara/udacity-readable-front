@@ -67,12 +67,11 @@
 }
 
 .main-menu ul li a:hover {
-  color: #EB191E;
   text-decoration: underline;
 }
 
 .main-menu ul li a.active {
-  color: #EB191E;
+  color: rgb(86, 86, 86);
   font-weight: 800;
 }
 

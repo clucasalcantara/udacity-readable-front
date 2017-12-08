@@ -118,22 +118,21 @@ class HandleComment extends Component {
     return (
       <div>
         <Header />
-
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label>Body</label>
-            <textarea type="content" name="body" value={body} onChange={this.handleTextChange} />
-          </div>
-
-          {!update.isUpdate && (
+        <div className="form-wrapper">
+          <form onSubmit={this.handleSubmit}>
             <div>
-              <label>Author</label>
-              <input type="text" name="author" value={author} onChange={this.handleTextChange} />
+              <label>Body</label>
+              <textarea type="content" name="body" value={body} onChange={this.handleTextChange} />
             </div>
-          )}
-
-          <button type="submit">{`${command} Comment`}</button>
-        </form>
+            {!update.isUpdate && (
+              <div>
+                <label>Author</label>
+                <input type="text" name="author" value={author} onChange={this.handleTextChange} />
+              </div>
+            )}
+            <button type="submit">{`${command} Comment`}</button>
+          </form>
+        </div>
       </div>
     )
   }

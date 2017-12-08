@@ -6,6 +6,9 @@ import { postsFetchData, deletePost, handleSort } from '../../../actions/posts'
 import { handleVoteScore } from '../../../actions/votescore'
 import Header from '../../common/Header'
 import VoteScore from '../../common/VoteScore'
+import Post from '../../common/Post'
+import OrderBox from '../../common/OrderBox'
+import InfoBox from '../../common/InfoBox'
 
 import './posts.css'
 
@@ -68,9 +71,9 @@ class Posts extends Component {
   }
 
   render() {
-    const { posts, hasErrored, isLoading } = this.props
+    const { posts, hasError, isLoading } = this.props
     const message = this.getCategoryName() ? true : false
-    if (hasErrored) {
+    if (hasError) {
       return <h1>Sorry but there was an error while fetch</h1>
     }
     if (isLoading) {
@@ -80,46 +83,19 @@ class Posts extends Component {
       <div>
         <Header />
         { 
-          message &&
-          <div className="message-posts-by-category">
-            <small>All posts from category</small>
-            <h2>{this.getCategoryName()}</h2>
-          </div>
+          message && <InfoBox getCategoryName={this.getCategoryName} />
         }
-        <div className="order-by-box">
-          Order posts by: 
-          <button className="regular-button" onClick={this.handleSort('timestamp')}>Data</button>
-          <button className="regular-button" onClick={this.handleSort('voteScore')}>Score</button>
-        </div>
+        <OrderBox handleSort={this.handleSort} />
         <div className="posts-wrapper">
         <h1>{message}</h1>
           <ul className="list-posts">
             {posts.map(post => (
-              <li key={post.id}>
-                <div className="post-header">
-                  <Link to={{
-                    pathname: `/${post.category}/${post.id}`
-                  }}>
-                    {post.title}
-                  </Link>
-                </div>
-
-                <span className="edit">
-                  <Link to={`/admin/post/${post.id}`}>
-                    edit
-                  </Link>
-                </span>
-
-                <button className="delete" onClick={() => this.onDeletePost(post.id)}> Delete </button>
-                
-                <div>Author: <strong>{post.author}</strong></div>
-
-                <div>Category: <strong> {post.category} </strong></div>
-
-                <div><strong>{post.commentCount}</strong> Comments</div>
-
-                <VoteScore id={post.id} handleScore={this.handleScore} score={post.voteScore} />
-              </li>
+              <Post
+                key={post.id}
+                post={post}
+                handleScore={this.handleScore}
+                onDeletePost={this.onDeletePost} 
+              />
             ))}
           </ul>
         </div>
@@ -131,7 +107,7 @@ class Posts extends Component {
 
 const mapStateToProps = (state) => ({
   posts: state.posts,
-  hasErrored: state.postsHasErrored,
+  hasError: state.postsHasError,
   isLoading: state.postsIsLoading
 })
 

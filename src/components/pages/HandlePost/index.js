@@ -106,40 +106,41 @@ class HandlePost extends Component {
     return (
       <div>
         <Header />
-
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label>Title</label>
-            <input type="text" name="title" value={title} onChange={this.handleTextChange} />
-          </div>
-          <div>
-            <label>Body</label>
-            <textarea type="content" name="body" value={body} onChange={this.handleTextChange} />
-          </div>
-
-          {!update.isUpdate && (
+        <div className="form-wrapper">
+          <form onSubmit={this.handleSubmit}>
             <div>
-              <div>
-                <label>Categories</label>
-                <select name="category" value={category} onChange={this.handleTextChange}>
-                  {categories.length > 0 && categories.map((c) => {
-                    return (
-                      <option value={c.name} key={c.path}>
-                        {c.name}
-                      </option>
-                    )
-                  }
-                  )}
-                </select>
-              </div>
-              <div>
-                <label>Author</label>
-                <input type="text" name="author" value={author} onChange={this.handleTextChange} />
-              </div>
+              <label>Title</label>
+              <input type="text" name="title" value={title} onChange={this.handleTextChange} />
             </div>
-          )}
-          <button type="submit">{`${command} Post`}</button>
-        </form>
+            <div>
+              <label>Body</label>
+              <textarea type="content" name="body" value={body} onChange={this.handleTextChange} />
+            </div>
+
+            {!update.isUpdate && (
+              <div>
+                <div>
+                  <label>Categories</label>
+                  <select name="category" value={category} onChange={this.handleTextChange}>
+                    {categories.length > 0 && categories.map((c) => {
+                      return (
+                        <option value={c.name} key={c.path}>
+                          {c.name}
+                        </option>
+                      )
+                    }
+                    )}
+                  </select>
+                </div>
+                <div>
+                  <label>Author</label>
+                  <input type="text" name="author" value={author} onChange={this.handleTextChange} />
+                </div>
+              </div>
+            )}
+            <button type="submit">{`${command} Post`}</button>
+          </form>
+        </div>
       </div>
     )
   }
@@ -148,7 +149,7 @@ class HandlePost extends Component {
 const mapStateToProps = (state) => {
   return {
     post: state.post,
-    fetchError: state.postsHasErrored,
+    fetchError: state.postsHasError,
     categories: state.categories
   }
 }

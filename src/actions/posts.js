@@ -16,7 +16,7 @@ export function postsIsLoading(bool) {
   }
 }
 
-export function postsHasErrored(bool) {
+export function postsHasError(bool) {
   return {
       type: POSTS_HAS_ERROR,
       hasErrored: bool
@@ -68,7 +68,7 @@ export function postFetchById(idPost) {
         return res.data
       })
       .then(post => dispatch(postFetchByIdDataSuccess(post)))
-      .catch(() => dispatch(postsHasErrored(true)))
+      .catch(() => dispatch(postsHasError(true)))
   }
  
 }
@@ -83,7 +83,7 @@ export function postsFetchData(category) {
         return res.data
       })
       .then(posts => dispatch(postsFetchDataSuccess(posts)))
-      .catch(() => dispatch(postsHasErrored(true)))
+      .catch(() => dispatch(postsHasError(true)))
   }
 }
 
@@ -97,7 +97,7 @@ export function insertPost(postData, id) {
         return res.data
       })
       .then(post => dispatch(insertUpdatePostSuccess(post)))
-      .catch(() => dispatch(postsHasErrored(true)))
+      .catch(() => dispatch(postsHasError(true)))
   }
 }
 
@@ -114,7 +114,7 @@ export function updatePost(id, { title, body }) {
         return res.data
       })
       .then(post => dispatch(insertUpdatePostSuccess(post)))
-      .catch(() => dispatch(postsHasErrored(true)))
+      .catch(() => dispatch(postsHasError(true)))
   }
 }
 
@@ -128,6 +128,6 @@ export function deletePost(id) {
         return res.data
       })
       .then(post => dispatch(deletePostSuccess(post)))
-      .catch(() => dispatch(postsHasErrored(true))) 
+      .catch(() => dispatch(postsHasError(true))) 
   }
 }

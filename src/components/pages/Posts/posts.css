@@ -1,5 +1,13 @@
 .message-posts-by-category {
-  margin: 1rem 0;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.message-posts-category-name {
+  text-transform: capitalize;
+  font-style: italic;
+  color: #005082;
+  text-shadow: 1px .5px rgba(0,0,0,.15);
 }
 
 .message-posts-by-category small {
@@ -67,11 +75,11 @@
   .message-posts-by-category {
     font-size: 3rem;
     line-height: 1.6;
-    margin-bottom: 100px;
+    margin-bottom: 30px;
   }
 }
 
 .order-by-box {
-  margin-top: 2em;
+  margin-top: 2rem;
   text-align: center;
 }

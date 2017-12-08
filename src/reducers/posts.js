@@ -17,7 +17,7 @@ export function postsIsLoading(state = false, action) {
   }
 }
 
-export function postsHasErrored(state = false, action) {
+export function postsHasError(state = false, action) {
   switch (action.type) {
     case POSTS_HAS_ERROR:
       return action.hasErrored
