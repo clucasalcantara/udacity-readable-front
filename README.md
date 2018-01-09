@@ -8,8 +8,8 @@ Clone this repo and run npm install :)
 
 ```sh
 $ git clone https://github.com/clucasalcantara/udacity-readable-project.git
-$ cd udacity-readable-project
-$ yarn
+$ cd udacity-readable-front
+$ npm i
 ```
 
 ## Running/Creating the API
@@ -27,12 +27,12 @@ $ npm install
 After you clone the server you can start the server with:
 
 ```sh
-$ yarn start
+$ npm start
 ```
 
 ## Running the frontend
 ```sh
-$ cd [YOUR_PROJECT_PATH]/udacity-readable-project
-$ yarn start
+$ cd [YOUR_PROJECT_PATH]/udacity-readable-front
+$ npm start
 ```
 
