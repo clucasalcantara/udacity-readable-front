@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import VoteScore from '../VoteScore'
 
-const Post = ({ post, onDeletePost, handleScore }) => (
+const Post = ({ post = {} , onDeletePost, handleScore }) => post ? (
   <li key={post.id}>
     <div className="post-header">
       <Link to={{
@@ -11,22 +11,29 @@ const Post = ({ post, onDeletePost, handleScore }) => (
       }}>
         {post.title}
       </Link>
+      <div className="post-actions">
+        <span className="edit">
+          <Link to={`/admin/post/${post.id}`}>Edit</Link>
+        </span>
+        <button className="delete" onClick={() => onDeletePost(post.id)}>Delete</button>
+      </div>
     </div>
-    <span className="edit">
-      <Link to={`/admin/post/${post.id}`}>edit</Link>
-    </span>
-    <button className="delete" onClick={() => onDeletePost(post.id)}>Delete</button>
-    <div>
-      Author: <strong>{post.author}</strong>
+    <div className="post-info">
+      <div>
+        Author: <strong>{post.author}</strong>
+      </div>
+      <div>
+        Category: <strong>{post.category}</strong>
+      </div>
+      <div>
+        <strong>{post.commentCount}</strong> Comments
+      </div>
     </div>
-    <div>
-      Category: <strong>{post.category}</strong>
+    <div className="vote-score">
+      <VoteScore id={post.id} handleScore={handleScore} score={post.voteScore} />
     </div>
-    <div>
-      <strong>{post.commentCount}</strong> Comments
-    </div>
-    <VoteScore id={post.id} handleScore={handleScore} score={post.voteScore} />
   </li>
-)
+) : <li>>Buscando post…</li>
 
 export default Post
+

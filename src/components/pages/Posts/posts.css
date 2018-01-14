@@ -37,9 +37,12 @@
   list-style-type: none;
   border: 1px solid black;
   padding: 20px;
+  min-width: 200px;
 }
 
 .list-posts .post-header{
+  display: flex;
+  flex-direction: row;
   margin-bottom: .6rem;
   font: 800 1.3rem Roboto,Arial,Helvetica,Sans-serif;
   word-break: break-word;
@@ -63,12 +66,33 @@
 }
 
 .list-posts .edit a {
-  color: #1a75eb;
+  padding: 5px 15px;
+  border-radius: 5px;
+  background: #1a75eb;
+  color: #fff;
 }
 
 .list-posts .delete {
+  padding: 5px;
+  border-radius: 5px;
   background: #ff5151;
   color: #fff;
+}
+
+.list-posts .post-info {
+  display: flex;
+  margin-top: 10px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.list-posts .vote-score {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.list-posts .post-actions {
+  justify-content: flex-end;
 }
 
 @media screen and (min-width: 734px) {
@@ -76,6 +100,12 @@
     font-size: 3rem;
     line-height: 1.6;
     margin-bottom: 30px;
+  }
+
+  .list-posts .post-header{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
   }
 }
 

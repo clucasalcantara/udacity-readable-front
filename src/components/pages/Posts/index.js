@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 import { postsFetchData, deletePost, handleSort } from '../../../actions/posts'
 import { handleVoteScore } from '../../../actions/votescore'
 import Header from '../../common/Header'
-import VoteScore from '../../common/VoteScore'
 import Post from '../../common/Post'
 import OrderBox from '../../common/OrderBox'
 import InfoBox from '../../common/InfoBox'
@@ -71,7 +69,8 @@ class Posts extends Component {
   }
 
   render() {
-    const { posts, hasError, isLoading } = this.props
+    const { posts = [], hasError, isLoading } = this.props
+    console.log(hasError)
     const message = this.getCategoryName() ? true : false
     if (hasError) {
       return <h1>Sorry but there was an error while fetch</h1>
@@ -89,6 +88,7 @@ class Posts extends Component {
         <div className="posts-wrapper">
         <h1>{message}</h1>
           <ul className="list-posts">
+            {posts.length === 0 && <span>No posts found</span>}
             {posts.map(post => (
               <Post
                 key={post.id}
@@ -111,11 +111,11 @@ const mapStateToProps = (state) => ({
   isLoading: state.postsIsLoading
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchData: (idCategory) => dispatch(postsFetchData(idCategory)),
-  deletePost: (idPost) => dispatch(deletePost(idPost)),
-  handleScore: (url, value) => dispatch(handleVoteScore(url, value)),
-  handleSort: (sortBy) => dispatch(handleSort(sortBy))
-})
+const mapDispatchToProps = {
+  fetchData: (idCategory) => postsFetchData(idCategory),
+  deletePost: (idPost) => deletePost(idPost),
+  handleScore: (url, value) => handleVoteScore(url, value),
+  handleSort: (sortBy) => handleSort(sortBy)
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Posts)

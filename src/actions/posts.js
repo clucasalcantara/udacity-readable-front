@@ -102,7 +102,8 @@ export function insertPost(postData, id) {
 }
 
 export function updatePost(id, { title, body }) {
-  const url = `posts/${id}`
+  const url = `http://localhost:3001/posts/${id}`
+  console.log('Over here', url)
   const data = {
     title,
     body
@@ -114,7 +115,7 @@ export function updatePost(id, { title, body }) {
         return res.data
       })
       .then(post => dispatch(insertUpdatePostSuccess(post)))
-      .catch(() => dispatch(postsHasError(true)))
+      .catch((error) => console.log(error))
   }
 }
 
