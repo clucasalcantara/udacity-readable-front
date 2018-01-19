@@ -65,28 +65,28 @@
   padding: .1rem .3rem;
 }
 
-.list-posts .edit a {
+.edit a {
   padding: 5px 15px;
   border-radius: 5px;
   background: #1a75eb;
   color: #fff;
 }
 
-.list-posts .delete {
+.delete {
   padding: 5px;
   border-radius: 5px;
   background: #ff5151;
   color: #fff;
 }
 
-.list-posts .post-info {
+.post-info {
   display: flex;
   margin-top: 10px;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.list-posts .vote-score {
+.vote-score {
   margin-top: 20px;
   text-align: center;
 }

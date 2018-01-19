@@ -68,7 +68,7 @@ export function commentsFetchData(postId) {
 
 export function insertComment(commentData) {
   const url = `comments/`
-  
+
   return (dispatch) => {
     post(url, commentData)
       .then(res => {
@@ -92,10 +92,10 @@ export function commentFetchById(idComment) {
       .then(comment => dispatch(commentFetchByIdDataSuccess(comment)))
       .catch(() => dispatch(commentsHasErrored(true)))
   }
- 
+
 }
 
-export function updateComment(id, {body, timestamp}) {
+export function updateComment(id, { body, timestamp }) {
   const url = `comments/${id}`
   const data = {
     timestamp,
@@ -108,13 +108,13 @@ export function updateComment(id, {body, timestamp}) {
         return res.data
       })
       .then(comment => dispatch(insertUpdateCommentSuccess(comment)))
-      .catch(() => dispatch(commentsHasErrored(true)))    
+      .catch(() => dispatch(commentsHasErrored(true)))
   }
 }
 
 export function deleteComment(id) {
   const url = `comments/${id}`
-  
+
   return (dispatch) => {
     deleteData(url)
       .then(res => {
@@ -122,6 +122,6 @@ export function deleteComment(id) {
         return res.data
       })
       .then(comment => dispatch(deleteCommentSuccess(comment)))
-      .catch(() => dispatch(commentsHasErrored(true)))    
+      .catch(() => dispatch(commentsHasErrored(true)))
   }
 }

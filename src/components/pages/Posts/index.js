@@ -3,8 +3,9 @@ import { connect } from 'react-redux'
 
 import { postsFetchData, deletePost, handleSort } from '../../../actions/posts'
 import { handleVoteScore } from '../../../actions/votescore'
+
 import Header from '../../common/Header'
-import Post from '../../common/Post'
+import PostBox from '../../common/PostBox'
 import OrderBox from '../../common/OrderBox'
 import InfoBox from '../../common/InfoBox'
 
@@ -32,8 +33,6 @@ class Posts extends Component {
     } else {
       this.props.fetchData()
     }
-
-
   }
 
   isRenderedByCategory = () => {
@@ -90,7 +89,7 @@ class Posts extends Component {
           <ul className="list-posts">
             {posts.length === 0 && <span>No posts found</span>}
             {posts.map(post => (
-              <Post
+              <PostBox
                 key={post.id}
                 post={post}
                 handleScore={this.handleScore}

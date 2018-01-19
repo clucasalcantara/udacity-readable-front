@@ -1,11 +1,12 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import swal from 'sweetalert2'
+import { connect } from 'react-redux'
 
-import VoteScore from '../VoteScore'
 import { deleteComment, commentsFetchData } from '../../../actions/comments'
 import { handleVoteScore } from '../../../actions/votescore'
+
+import VoteScore from '../VoteScore'
 
 import './style.css'
 
@@ -24,7 +25,7 @@ const onDeleteComment = async (id, props, history) => {
 
 const handleScore = async (id, value, props) => {
   const { idPost, handleScore, fetchComments } = props
-  const url = `http://localhost:3001/comments/${id}`
+  const url = `comments/${id}`
   const res = { option: value }
   await handleScore(url, res)
   fetchComments(idPost)
@@ -32,47 +33,54 @@ const handleScore = async (id, value, props) => {
 
 
 const Comments = (props) => {
-  const { hasErrored, isLoading, data, idPost, history  } = props
-  
+  const { hasErrored, isLoading, data = [], history } = props
+
   if (hasErrored) {
     return <h1>Sorry but there was an error while fetch</h1>
   }
   if (isLoading) {
     return <h1>Loading ...</h1>
   }
-  
+
   const parentId = data.length > 0 ? data[0].parentId : ''
-  
+
   return (
     <div>
       <div>
-        <h2>Comments</h2>
-        <Link to={`/admin/comment/${idPost}`}>Add new COMMENT</Link>
-        <div className="comments-wrapper">
-          <ul>
-            {data.map(comment => (
-              <li key={comment.id}>
+        <ul className="comments-list">
+          {data && data.map(comment => (
+            <li className="comment-item" key={comment.id}>
+              <div className="comment-info">
                 <div>{comment.body}</div>
-
-                <Link to={`/admin/comment/${parentId}/${comment.id}`}>
-                  ( edit this comment )
-                </Link>
-
-                <button onClick={() => onDeleteComment(comment.id, props, history)}> Delete </button>
-
                 <div>
                   Author: <b>{comment.author}</b>
                 </div>
-
-                <div>
-                  <b>{comment.commentCount}</b> Comments
+              </div>
+              <div className="comments-actions">
+                <div style={{ paddingBottom: ".5em" }}>
+                  <span className="edit">
+                    <Link to={`/admin/comment/${parentId}/${comment.id}`}>
+                      Edit this comment
+                    </Link>
+                  </span>
+                  <button
+                    className="delete"
+                    onClick={() =>
+                      onDeleteComment(comment.id, props, history)
+                    }
+                  >
+                    Delete
+                  </button>
                 </div>
-
-                <VoteScore id={comment.id} handleScore={handleScore} score={comment.voteScore} />
-              </li>
-            ))}
-          </ul>
-        </div>
+                <VoteScore
+                  id={comment.id}
+                  handleScore={handleScore}
+                  score={comment.voteScore}
+                />
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
 
     </div>

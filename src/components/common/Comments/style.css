@@ -4,3 +4,21 @@
   justify-content: center;
   align-items: center;
 }
+
+.comments-list {
+  list-style-type: none;
+}
+.comment-item {
+  display: flex;
+  min-width: 45em;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comments-actions {
+  display: flex;
+  flex-direction: column;
+  min-height: 2em;
+  justify-content: space-between;
+  align-items: center;
+}
