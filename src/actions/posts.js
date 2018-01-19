@@ -102,8 +102,7 @@ export function insertPost(postData, id) {
 }
 
 export function updatePost(id, { title, body }) {
-  const url = `http://localhost:3001/posts/${id}`
-  console.log('Over here', url)
+  const url = `posts/${id}`
   const data = {
     title,
     body

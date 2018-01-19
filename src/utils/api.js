@@ -25,7 +25,7 @@ export function post (action, data) {
 
 export function put (action, data) {
   const headers = { 'Authorization': 'whatever-you-want' }
-  const url = `http://${API_URL}:${API_PORT}${action}`
+  const url = `http://${API_URL}:${API_PORT}/${action}`
   return axios({
     method: 'put',
     url,
