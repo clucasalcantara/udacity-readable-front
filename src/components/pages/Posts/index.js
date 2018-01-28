@@ -73,7 +73,6 @@ class Posts extends Component {
 
   render() {
     const { posts = [], hasError, isLoading, history } = this.props
-    console.log(posts, hasError)
     const message = this.getCategoryName() ? true : false
     if (hasError) {
       return <h1>Sorry but there was an error while fetch</h1>
