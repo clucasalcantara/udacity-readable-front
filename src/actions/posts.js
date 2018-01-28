@@ -73,8 +73,9 @@ export function postFetchById(idPost) {
  
 }
 
-export function postsFetchData(category) {
+export function postsFetchData(category = null) {
   const url = category ? `${category}/posts` : 'posts'
+  console.log('Fetching this url', url)
   return (dispatch) => {
     dispatch(postsIsLoading(true))
     get(url)
