@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 import Posts from './components/pages/Posts'
+import Post from './components/pages/Post'
 import NotFound from './components/pages/NotFound'
 import HandlePost from './components/pages/HandlePost'
 import HandleComment from './components/pages/HandleComment'
@@ -13,7 +14,7 @@ const App = () => (
       <Route path="/admin/post" component={HandlePost} />
       <Route path="/admin/comment/:idPost/:id" component={HandleComment} />
       <Route path="/admin/comment/:idPost" component={HandleComment} />
-      <Route path="/:category/:id" component={Posts} />
+      <Route path="/:category/:id" component={Post} />
       <Route path="/:category" component={Posts} />
       <Route exact path="/" component={Posts} />
       <Route component={NotFound} />

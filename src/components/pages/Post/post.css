@@ -1,0 +1,14 @@
+.post-title, .post-body, .post-comments {  
+  text-align: center;
+  padding: 20px;
+}
+
+.edit {
+  margin-top: 5px;
+}
+
+.post-action {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}

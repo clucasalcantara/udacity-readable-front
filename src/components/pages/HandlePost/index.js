@@ -99,6 +99,8 @@ class HandlePost extends Component {
     const { categories = [] } = this.props.categories
     const command = update.isUpdate === true ? 'Update' : 'Create'
 
+    console.log(this.props.post)
+
     if (fetchError) {
       return <NotFound />
     }

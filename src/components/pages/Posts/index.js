@@ -96,7 +96,7 @@ class Posts extends Component {
                 <article className="post-box">
                   <div className="post-item">
                     <div>
-                      <Link to={`/admin/post/${post.id}`}>
+                      <Link to={`/${post.category}/${post.id}`}>
                         <h1 className="post-title">{post.title}</h1>
                       </Link>
                       <div className="post-body">
