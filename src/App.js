@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
+import Home from './components/pages/Home'
 import Posts from './components/pages/Posts'
 import Post from './components/pages/Post'
 import NotFound from './components/pages/NotFound'
@@ -16,7 +17,7 @@ const App = () => (
       <Route path="/admin/comment/:idPost" component={HandleComment} />
       <Route path="/:category/:id" component={Post} />
       <Route path="/:category" component={Posts} />
-      <Route exact path="/" component={Posts} />
+      <Route exact path="/" component={Home} />
       <Route component={NotFound} />
     </Switch>
   </div>

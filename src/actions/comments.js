@@ -77,7 +77,7 @@ export function insertComment(commentData) {
       })
       .then(post => dispatch(insertUpdateCommentSuccess(post)))
       .catch(() => dispatch(commentsHasErrored(true)))
-  }
+    }
 }
 
 export function commentFetchById(idComment) {

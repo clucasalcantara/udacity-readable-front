@@ -9,7 +9,6 @@ import Header from '../../common/Header'
 import OrderBox from '../../common/OrderBox'
 import InfoBox from '../../common/InfoBox'
 import VoteScore from '../../common/VoteScore'
-import Comments from '../../common/Comments'
 
 import './posts.css'
 
@@ -72,7 +71,8 @@ class Posts extends Component {
   }
 
   render() {
-    const { posts = [], hasError, isLoading, history } = this.props
+    const { posts = [], hasError, isLoading } = this.props
+
     const message = this.getCategoryName() ? true : false
     if (hasError) {
       return <h1>Sorry but there was an error while fetch</h1>
@@ -83,7 +83,7 @@ class Posts extends Component {
     return (
       <div>
         <Header />
-        { 
+        {
           message && <InfoBox getCategoryName={this.getCategoryName} />
         }
         <OrderBox handleSort={this.handleSort} />
@@ -103,13 +103,13 @@ class Posts extends Component {
                         {post.body}
                       </div>
                     </div>
-                    <VoteScore
-                      id={post.id}
-                      handleScore={this.handleScore}
-                      score={post.voteScore}
-                    />
-                    <div>{`${post.commentCount} comments`}</div>
                     <div className="post-action-box">
+                      <VoteScore
+                       id={post.id}
+                       handleScore={this.handleScore}
+                       score={post.voteScore}
+                     />
+                     <div>{`${post.commentCount} comments`}</div>
                       <div>
                         <span className="edit">
                           <Link to={`/admin/post/${post.id}`}>
@@ -120,7 +120,6 @@ class Posts extends Component {
                       </div>
                       <Link to={`/admin/comment/${post.id}`}>Add new COMMENT</Link>
                     </div>
-                    <Comments idPost={post.id} history={history} />
                   </div>
                 </article>
               </li>

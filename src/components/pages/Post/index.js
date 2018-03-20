@@ -41,7 +41,7 @@ class Post extends PureComponent {
 
   handleScore = async (id, value) => {
     const { handleScore, fetchPost } = this.props
-    const url = `http://localhost:3001/posts/${id}`
+    const url = `posts/${id}`
     const res = { option: value }
     await handleScore(url, res)
     fetchPost(id)
@@ -63,7 +63,7 @@ class Post extends PureComponent {
         <Header />
 
         <article>
-          
+
           <h1 className="post-title">{post.title}</h1>
           <div className="post-action">
             <span className="edit">
@@ -81,6 +81,7 @@ class Post extends PureComponent {
             <div>{`${post.commentCount} comments`}</div>
           </div>
           <div className="post-comments">
+            <Link to={`/admin/comment/${id}`}>Add new COMMENT</Link>
             <Comments idPost={id} history={history} />
           </div>
         </article>

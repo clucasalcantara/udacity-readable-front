@@ -27,21 +27,14 @@ export function commentsHasErrored(state = false, action) {
 
 export function comments(state = [], action) {
   switch (action.type) {
-    case FETCH_COMMENTS_DATA_SUCCESS:
-      return action.comments
-    default:
-      return state
-  }
-}
-
-export function comment(state = [], action) {
-  switch (action.type) {
     case FETCH_COMMENTS_BY_ID_SUCCESS:
       return action.comment
     case INSERT_UPDATE_COMMENT_SUCCESS:
-      return action.comment
+      return state.push(action.comment)
     case DELETE_COMMENT_SUCCESS:
-      return action.comment
+      return state.filter(item => item.id !== action.comment.id)
+    case FETCH_COMMENTS_DATA_SUCCESS:
+      return action.comments
     default:
       return state
   }

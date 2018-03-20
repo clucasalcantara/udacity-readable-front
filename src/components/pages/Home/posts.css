@@ -95,6 +95,8 @@
   justify-content: flex-end;
 }
 
+.post-action-box { text-align: center; }
+
 @media screen and (min-width: 734px) {
   .message-posts-by-category {
     font-size: 1.3rem;

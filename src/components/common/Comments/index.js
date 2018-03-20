@@ -44,11 +44,13 @@ const Comments = (props) => {
 
   const parentId = data.length > 0 ? data[0].parentId : ''
 
+  console.log(data)
+
   return (
     <div>
       <div>
         <ul className="comments-list">
-          {data && data.map(comment => (
+          {typeof data === 'object' && data.map(comment => (
             <li className="comment-item" key={comment.id}>
               <div className="comment-info">
                 <div>{comment.body}</div>

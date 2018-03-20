@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { postsIsLoading, postsHasError, posts, post } from './posts'
 import { categoriesIsLoading, categoriesHasErrored, categories } from './categories'
-import { commentsIsLoading, commentsHasErrored, comments, comment } from './comments'
+import { commentsIsLoading, commentsHasErrored, comments } from './comments'
 import { voteScore } from './votescore'
 
 export default combineReducers({
@@ -15,6 +15,5 @@ export default combineReducers({
   commentsIsLoading,
   commentsHasErrored,
   comments,
-  comment,
   voteScore
 })
